@@ -17,6 +17,7 @@ let package = Package(
     )
   ],
   dependencies: [
+    .package(url: "https://github.com/ReactiveX/RxSwift", from: "5.1.1"),
     .package(url: "https://github.com/google/swift-benchmark", from: "0.1.0"),
     .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "0.1.0"),
     .package(url: "https://github.com/pointfreeco/swift-clocks", from: "0.1.0"),
@@ -26,6 +27,7 @@ let package = Package(
     .target(
       name: "Dependencies",
       dependencies: [
+        .product(name: "RxSwift", package: "RxSwift"),
         .product(name: "CombineSchedulers", package: "combine-schedulers"),
         .product(name: "Clocks", package: "swift-clocks"),
         .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
