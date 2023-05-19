@@ -199,7 +199,7 @@ import Foundation
         /// ```
         ///
         /// - Parameter keypath: the kaypath for our injected dependencies
-        public static func clear(keypath: WritableKeyPath<DependencyValues>) {
+        public static func clear<Value>(keypath: WritableKeyPath<DependencyValues, Value>) {
             _bootstrappedDependencies.storage.removeValue(forKey: ObjectIdentifier(keypath))
         }
     }
