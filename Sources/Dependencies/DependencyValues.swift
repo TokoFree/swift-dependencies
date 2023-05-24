@@ -87,7 +87,7 @@ public struct DependencyValues: Sendable {
   @TaskLocal static var currentDependency = CurrentDependency()
 
   fileprivate var cachedValues = CachedValues()
-  private var storage: [ObjectIdentifier: AnySendable] = [:]
+  internal var storage: [ObjectIdentifier: AnySendable] = [:]
 
   /// Creates a dependency values instance.
   ///
@@ -207,7 +207,7 @@ public struct DependencyValues: Sendable {
   }
 }
 
-private struct AnySendable: @unchecked Sendable {
+internal struct AnySendable: @unchecked Sendable {
   let base: Any
   @inlinable
   init<Base: Sendable>(_ base: Base) {

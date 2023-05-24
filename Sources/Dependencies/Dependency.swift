@@ -91,8 +91,15 @@ public struct Dependency<Value>: @unchecked Sendable, _HasInitialValues {
       currentDependency.file = self.file
       currentDependency.fileID = self.fileID
       currentDependency.line = self.line
+
       return DependencyValues.$currentDependency.withValue(currentDependency) {
-        let dependencies = self.initialValues.merging(DependencyValues._current)
+          /// here we tried to implement mock using bootstrap
+          /// by using `.merging(...)`
+          /// 
+          let dependencies = self.initialValues
+          .merging(DependencyValues._current)
+          .merging(_bootstrappedDependencies)
+          
         return DependencyValues.$_current.withValue(dependencies) {
           DependencyValues._current[keyPath: self.keyPath]
         }
